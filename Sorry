@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You 🤍</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+/* Gift box */
+.gift {
+    font-size: 90px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    z-index: 3;
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Message card */
+.card {
+    display: none;
+    background: white;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: fadeIn 2s ease forwards;
+    z-index: 2;
+}
+
+h1 {
+    color: #ff4d6d;
+    margin-bottom: 15px;
+}
+
+p {
+    color: #333;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+/* Floating flowers */
+.float {
+    position: absolute;
+    bottom: -60px;
+    font-size: 30px;
+    animation: rise 7s linear infinite;
+    opacity: 0.9;
+    z-index: 1;
+}
+
+@keyframes rise {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="gift" id="gift">🎁</div>
+
+<div class="card" id="card">
+    <h1>I’m Sorry, My Love 🤍</h1>
+    <p>
+        My dearest <strong>Shokha</strong>,<br><br>
+        I never meant to hurt you.🥺<br>
+        You mean more to me than my ego.<br>
+        I was dumb and stupid.🤯💀<br><br>
+        These flowers are my apology 🌸<br>
+        And my heart is always yours.❤️<br><br>
+        Do you forgive me.️🥹<br>
+        Pretty Please, My Love.😘
+    </p>
+</div>
+
+<script>
+const flowers = ["🌸","🌹","💐","🌷","❤️"];
+
+function createFlower() {
+    const f = document.createElement("div");
+    f.className = "float";
+    f.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+    f.style.left = Math.random() * 100 + "vw";
+    f.style.animationDuration = (5 + Math.random() * 4) + "s";
+    document.body.appendChild(f);
+    setTimeout(() => f.remove(), 9000);
+}
+
+document.getElementById("gift").onclick = () => {
+    document.getElementById("gift").style.display = "none";
+    document.getElementById("card").style.display = "block";
+    setInterval(createFlower, 400);
+};
+</script>
+
+</body>
+</html>
